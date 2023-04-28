@@ -1,4 +1,4 @@
-import { todoState } from "@/pages/recoil/todo";
+import { todoState } from "./store/RecoilStore";
 import { Card, Space } from "antd";
 import { FC } from "react";
 import { selector, useRecoilValue } from "recoil";
