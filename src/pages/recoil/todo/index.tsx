@@ -1,12 +1,27 @@
 import { NextPage } from "next";
 import { Form, Input, Row, Button } from "antd";
+import { atom, useRecoilState } from "recoil";
+import RecoilList from "@/components/Recoil/RecoilList";
+
+export const todoState = atom({
+  key: "todos",
+  default: [
+    {
+      title: "",
+      contents: "",
+    },
+  ],
+});
 
 const TodoPage: NextPage = () => {
   const [form] = Form.useForm();
   const title = Form.useWatch("title", form);
   const contents = Form.useWatch("contents", form);
+  const [todoList, setTodoList] = useRecoilState(todoState);
 
-  const onAddTodo = () => {};
+  const onAddTodo = () => {
+    setTodoList([...todoList, { title, contents }]);
+  };
 
   return (
     <Row
@@ -63,6 +78,7 @@ const TodoPage: NextPage = () => {
           </Button>
         </Form.Item>
       </Form>
+      <RecoilList />
     </Row>
   );
 };
