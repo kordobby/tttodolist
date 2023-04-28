@@ -1,5 +1,6 @@
 import { Layout } from "antd";
 import { FC, ReactNode } from "react";
+import { RecoilRoot } from "recoil";
 import NavMenu from "./NavMenu";
 
 interface LayoutProps {
@@ -9,15 +10,17 @@ interface LayoutProps {
 const RecoilLayout: FC<LayoutProps> = ({ children }) => {
   const { Header, Sider, Content } = Layout;
   return (
-    <Layout>
-      <Header></Header>
+    <RecoilRoot>
       <Layout>
-        <Sider>
-          <NavMenu />
-        </Sider>
-        <Content>{children}</Content>
+        <Header></Header>
+        <Layout>
+          <Sider>
+            <NavMenu />
+          </Sider>
+          <Content>{children}</Content>
+        </Layout>
       </Layout>
-    </Layout>
+    </RecoilRoot>
   );
 };
 
