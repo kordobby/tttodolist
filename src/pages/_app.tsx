@@ -5,7 +5,7 @@ import Layout from "@/components/GNB/Layout/Layout";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <Layout stateType="recoil">
-      <Component {...pageProps} />;
+      <Component {...pageProps} />
     </Layout>
   );
 }
