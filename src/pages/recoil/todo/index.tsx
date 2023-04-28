@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import { Row } from "antd";
+import { Divider, Row } from "antd";
 import RecoilList from "@/components/Recoil/RecoilList";
 import RecoilForm from "@/components/Recoil/RecoilForm";
 
@@ -14,7 +14,9 @@ const TodoPage: NextPage = () => {
         height: "100vh",
       }}
     >
+      <Divider plain>TodoForm</Divider>
       <RecoilForm />
+      <Divider plain>TodoList</Divider>
       <RecoilList />
     </Row>
   );

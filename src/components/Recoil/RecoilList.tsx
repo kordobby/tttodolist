@@ -1,15 +1,25 @@
 import { todoState } from "./store/RecoilStore";
-import { Card, Space } from "antd";
-import { FC } from "react";
-import { selector, useRecoilValue } from "recoil";
+import { Button, Card, Space } from "antd";
+import { selector, useRecoilState, useRecoilValue } from "recoil";
 
 interface TodoCardInterface {
   title: string;
   contents: string;
+  id: number;
 }
-const TodoCard = ({ title, contents }: TodoCardInterface) => {
+const TodoCard = ({ title, contents, id }: TodoCardInterface) => {
+  const [todoList, setTodoList] = useRecoilState(todoState);
+
+  const onDeleteTodo = (id: number) => {
+    const newArray = todoList.filter((value) => value.id !== id);
+    setTodoList(newArray);
+  };
+
   return (
-    <Card title={title}>
+    <Card
+      title={title}
+      extra={<Button onClick={() => onDeleteTodo(id)}>삭제</Button>}
+    >
       <p>{contents}</p>
     </Card>
   );
@@ -18,30 +28,32 @@ const TodoCard = ({ title, contents }: TodoCardInterface) => {
 type TodoType = {
   title: string;
   contents: string;
+  id: number;
 };
 
 const RecoilList = () => {
-  const todoListState = selector({
-    key: "todotodo",
-    get: ({ get }) => {
-      const todos = get(todoState);
+  // const todoListState = selector({
+  //   key: "todotodo",
+  //   get: ({ get }) => {
+  //     const todos = get(todoState);
 
-      return todos.length;
-    },
-  });
+  //     return todos.length;
+  //   },
+  // });
 
   const todoList = useRecoilValue(todoState);
-  const todoCount = useRecoilValue(todoListState);
+  // const todoCount = useRecoilValue(todoListState);
 
   return (
     <Space>
-      <p>{todoCount}</p>
+      <Space>{/* <p>{todoCount}</p> */}</Space>
       {todoList?.map((value, index) => {
         return (
           <TodoCard
-            key={`recoil-${index}`}
+            key={`recoil-${value.id}-${index}`}
             title={value.title}
             contents={value.contents}
+            id={value.id}
           />
         );
       })}

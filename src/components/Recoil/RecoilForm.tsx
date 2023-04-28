@@ -9,7 +9,7 @@ const RecoilForm = () => {
   const [todoList, setTodoList] = useRecoilState(todoState);
 
   const onAddTodo = () => {
-    setTodoList([...todoList, { title, contents }]);
+    setTodoList([...todoList, { title, contents, id: Math.random() }]);
   };
 
   return (
