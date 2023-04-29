@@ -58,8 +58,20 @@ const NavMenu = () => {
       ),
     ]),
     getMenuItem(() => {}, "Jotai", "jotai", <CoffeeOutlined />, [
-      getMenuItem(() => {}, "About", "5"),
-      getMenuItem(() => {}, "Todo", "6"),
+      getMenuItem(
+        () => {
+          route.push("/jotai/todo");
+        },
+        "About",
+        "5"
+      ),
+      getMenuItem(
+        () => {
+          route.push("/jotai/todo");
+        },
+        "Todo",
+        "6"
+      ),
     ]),
   ];
 
