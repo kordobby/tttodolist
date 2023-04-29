@@ -28,24 +28,36 @@ const NavMenu = () => {
     getMenuItem(() => {}, "Recoil", "recoil", <CoffeeOutlined />, [
       getMenuItem(
         () => {
-          route.push("/recoil");
+          route.replace("/recoil");
         },
         "About",
         "1"
       ),
       getMenuItem(
         () => {
-          route.push("/recoil/todo");
+          route.replace("/recoil/todo");
         },
         "Todo",
         "2"
       ),
     ]),
-    getMenuItem(() => {}, "Recoil", "jotai", <CoffeeOutlined />, [
-      getMenuItem(() => {}, "About", "3"),
-      getMenuItem(() => {}, "Todo", "4"),
+    getMenuItem(() => {}, "Zustand", "zustand", <CoffeeOutlined />, [
+      getMenuItem(
+        () => {
+          route.push("/zustand");
+        },
+        "About",
+        "3"
+      ),
+      getMenuItem(
+        () => {
+          route.push("/zustand/todo");
+        },
+        "Todo",
+        "4"
+      ),
     ]),
-    getMenuItem(() => {}, "Recoil", "zustand", <CoffeeOutlined />, [
+    getMenuItem(() => {}, "Jotai", "jotai", <CoffeeOutlined />, [
       getMenuItem(() => {}, "About", "5"),
       getMenuItem(() => {}, "Todo", "6"),
     ]),

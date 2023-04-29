@@ -25,7 +25,7 @@ const TodoCard = ({ title, contents, id }: TodoCardInterface) => {
   );
 };
 
-type TodoType = {
+export type TodoType = {
   title: string;
   contents: string;
   id: number;
