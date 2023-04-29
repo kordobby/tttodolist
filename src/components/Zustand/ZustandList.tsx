@@ -8,7 +8,7 @@ interface TodoCardInterface {
 }
 
 const TodoCard = ({ title, contents, id }: TodoCardInterface) => {
-  const { state, setState, deleteTodo } = zustandTodo();
+  const { deleteTodo } = zustandTodo();
 
   return (
     <Card
